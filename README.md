@@ -45,9 +45,12 @@ Para asegurar que las entradas no estén vacías y correspondan al tipo de dato 
 
 ### 3. Cálculo del IMC y Despliegue
 Se aplica la fórmula matemática estándar dividiendo el peso entre el cuadrado de la estatura:
-$$
-IMC = \frac{Peso(kg)}{Estatura(m)^2}
-$$
+
+```text
+          Peso (kg)
+IMC = ─────────────────
+      Estatura (m) × Estatura (m)
+```
 
 El resultado final se muestra formateado elegantemente a dos decimales (`:.2f`) y los nombres se transforman de forma automática a formato de título (`.title()`).
 
@@ -73,5 +76,6 @@ El desarrollo de este Proyecto 1 de lógica de programación en Python me dejó 
 ### Ejecución
 1. Abre una terminal en la ruta del archivo.
 2. Ejecuta el comando:
+```text
    python calculadora_imc.py
-   ```
+```
