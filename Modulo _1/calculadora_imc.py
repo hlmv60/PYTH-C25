@@ -69,3 +69,19 @@ print("\n" + "="*40)
 print(f"Usuario: {nombre.title()} {apellidoPat.title()} {apellidoMat.title()}")
 print(f"Edad: {edad} años")
 print(f"Índice de Masa Corporal (IMC): {imc:.2f}")
+
+# Interpretar el resultado del IMC
+
+if imc < 18.5:
+    print("Usted está por debajo del peso normal.")
+elif imc < 25.0:  # Cubre desde 18.5 hasta 24.999...
+    print("Usted tiene un peso normal.")
+elif imc < 30.0:  # Cubre desde 25.0 hasta 29.999...
+    print("Usted tiene sobrepeso.")
+elif imc < 35.0:  # Cubre desde 30.0 hasta 34.999...
+    print("Usted tiene obesidad leve.")
+elif imc < 40.0:  # Cubre desde 35.0 hasta 39.999...
+    print("Usted tiene obesidad media.")
+else:             # Cubre 40.0 o cualquier valor superior
+    print("Usted tiene obesidad mórbida.")
+exit()
