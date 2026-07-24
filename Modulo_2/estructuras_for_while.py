@@ -14,6 +14,27 @@ while True:
     else:
         print("Fuera de rango intenta de nuevo:")
 
+# Caso de Uso for: Recorrer una lista de productos detectar los de bajo stock:
+# Y calcular el valor total del inventario
+#n = 5
+productos = [
+    {"nombre": "Lapicero", "precio": 5.0, "stock": 12 }, #0
+    {"nombre": "Cuaderno", "precio": 25.0, "stock": 3 }, #1
+    {"nombre": "Mochila", "precio": 450.0, "stock": 1 }, #2
+    {"nombre": "Goma", "precio": 3.5, "stock": 20 }      #3
     
+]
+total_inventario = 0
+bajo_stock = []
+
+for producto in productos :
+    if producto["stock"] <= n:
+        bajo_stock.append(producto["nombre"])
+    total_inventario += producto["precio"] * producto["stock"]
+print(f'Productos de bajo costo "{bajo_stock}"')
+print(f"Total del inventario ${total_inventario}")
+
+    
+
 
 
