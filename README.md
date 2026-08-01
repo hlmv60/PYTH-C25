@@ -80,3 +80,101 @@ El desarrollo de este Proyecto 1 de lógica de programación en Python me dejó 
    python calculadora_imc.py
 ```
 
+#   Validación y Operaciones de datos Python Proyecto 2
+
+Este proyecto en **Python** consiste en la resolución de dos ejercicios prácticos enfocados en el control de flujo, validación estricta de entradas de usuario (`inputs`) y lógica matemática básica, validación de cadenas y análisis de coordenadas .
+
+---
+
+##  1. Conceptos Aprendidos
+
+Durante el desarrollo de este proyecto se pusieron en práctica y reforzaron los siguientes conceptos de programación en Python:
+
+* **Control de flujo con bucles `while True`:** Uso de ciclos infinitos controlados para solicitar datos repetidamente hasta que el usuario ingrese información válida.
+* **Manejo de excepciones (`try / except`):** Captura del error `ValueError` para evitar que el programa se detenga interruptamente si el usuario ingresa letras o símbolos donde se esperaban números.
+* **Validación de cadenas (`.isalpha()` y `len()`):** 
+  * `.isalpha()` para asegurar que la entrada contenga **únicamente letras** (rechazando números y caracteres especiales).
+  * `len()` para obtener directamente la cantidad de caracteres de un string de forma eficiente.
+* **Condicionales y operadores lógicos (`if`, `elif`, `else`):** Estructuración de múltiples caminos de ejecución según el cumplimiento de condiciones compuestas (`and`, `>`, `<`, `!=`).
+* **Lógica del plano cartesiano:** Identificación de cuadrantes basados en la combinación de signos de los ejes $X$ e $Y$.
+
+---
+
+##  2. ¿Cómo se Realizó el Proyecto?
+
+El proyecto se dividió en dos partes clave:
+
+### Parte 1: Validación y Conteo de Palabras
+1. **Captura y validación de texto:**
+   Se utiliza un bucle `while` junto con la función `.isalpha()` para solicitar una palabra. Si el usuario ingresa números o símbolos, el programa muestra un mensaje de error y solicita el texto de nuevo.
+2. **Evaluación de la longitud:**
+   Se calcula la cantidad de letras usando  el  `for cont +=1` que se puede sustituir por `len(palabra)` y se compara mediante condicionales:
+   * **Menos de 4 letras:** Imprime que faltan letras e indica la cantidad actual ($N$).
+   * **Más de 8 letras:** Imprime que sobran letras e indica la cantidad actual ($N$).
+   * **Entre 4 y 8 letras:** Confirma que la palabra es correcta.
+
+---
+
+### Parte 2: Identificación de Cuadrantes Cartesianos
+1. **Entrada y conversión de datos:**
+   Se solicita la entrada de los ejes $X$ e $Y$. Utilizando un bloque `try / except ValueError`, se garantiza que ambos valores sean enteros válidos (admitiendo números negativos y positivos).
+2. **Restricción del cero ($0$):**
+   Se valida mediante la condición `if x != 0 and y != 0` que ninguno de los ejes sea igual a cero. De lo contrario, se solicita nuevamente el ingreso.
+3. **Ubicación en el cuadrante:**
+   Una vez validadas las coordenadas, se determina el cuadrante según la siguiente lógica de signos:
+   * **Cuadrante I:** $X > 0, Y > 0 \quad (+,+)$
+   * **Cuadrante II:** $X < 0, Y > 0 \quad (-,+)$
+   * **Cuadrante III:** $X < 0, Y < 0 \quad (-,-)$
+   * **Cuadrante IV:** $X > 0, Y < 0 \quad (+,-)$
+
+---
+## 💻 Código Fuente del Proyecto
+```python
+while True:
+    palabra = input("Ingrese la palabra a contar: ")
+    
+# Validar que la palabra solo contenga letras
+    if  palabra.isalpha():
+         break
+    else:
+        print("Error: debe ingresar una palabra intente otra vez: ")
+        continue
+# Obtener la longitud de la palabra con la iteracion del for
+cont = 0   
+for i in palabra :
+    cont += 1
+
+if cont < 4:
+    print(f"Hacen falta letras solo tiene {cont} letras")
+elif cont > 8:
+    print(f"Sobran letras. Tiene {cont} letras.")
+else:
+    print(f"La Palabra es correcta tiene {cont} letras.")
+    
+print("-" * 50)
+
+# ==========================================
+# PARTE 2: Identificar cuadrante
+# ==========================================    
+
+while True:
+    try:
+        x = int(input("Ingrese X: "))
+        y = int(input("Ingrese Y: "))
+
+        if x != 0 and y != 0:
+            break  # Válido: son enteros y ninguno es cero salimos del bucle
+        
+        print("Error: Las coordenadas no pueden ser 0. Intente de nuevo.\n")
+
+    except ValueError:
+        print("Error: Debe ingresar solo números enteros válidos (ej. -5, 3, -10). Intente de nuevo.\n")
+# Evaluacion del cuadrante segun los signos de X e Y    
+if x > 0 and y > 0 :
+    print(f"El punto ({x},{y}) se encuentra en el cuadrante I(++).")
+elif  x < 0 and  y > 0:
+    print(f"El punto ({x},{y}) se encuentra en el cuadrante II(-+).")
+elif x < 0 and y < 0:
+    print(f"El punto ({x},{y}) se encuentra en el cuadrante III(--).")
+elif x > 0  and y < 0 :
+    print(f"El punto ({x},{y}) se encuentra en el cuadrante IV(+-).")
