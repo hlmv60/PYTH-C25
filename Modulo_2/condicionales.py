@@ -1,5 +1,5 @@
 #if condicional simple 
-caso: verificar si un numero es positivo 
+#caso: verificar si un numero es positivo 
 numero = int(input("Ingrese un numero: "))
 if numero > 0:
     print("El numero es positivo")
