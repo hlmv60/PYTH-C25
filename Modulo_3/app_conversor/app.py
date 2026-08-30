@@ -18,4 +18,8 @@ def iniciar_programa():
          else:
              print(f'\nError por favor ingresa un número válido para el monto')
      except ValueError:
-        print('\nError: Por favor ingrrese un número válido para el monto.') 
+        print('\nError: Por favor ingrrese un número válido para el monto.')
+
+if __name__ == "__main__":
+    iniciar_programa()
+       
