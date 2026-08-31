@@ -178,3 +178,48 @@ elif x < 0 and y < 0:
     print(f"El punto ({x},{y}) se encuentra en el cuadrante III(--).")
 elif x > 0  and y < 0 :
     print(f"El punto ({x},{y}) se encuentra en el cuadrante IV(+-).")
+```
+# Simulación del Tablero de Galton (Máquina de Galton)
+
+Este proyecto simula el comportamiento de una Máquina de Galton utilizando Python de forma modular. Calcula el recorrido probabilístico de miles de bolas al caer por varios niveles de obstáculos y genera una gráfica de barras que muestra la distribución normal resultante.
+
+---
+
+## 🛠️ Estructura del Proyecto
+
+El código está organizado de manera modular para separar la lógica, el procesamiento de datos y la visualización:
+
+* **`Calculo_resultados.py`**: Contiene la lógica matemática para simular el trayecto aleatorio de cada bola a través de los niveles de clavos genera el contenedor en el diccionario en crudo.
+* **`data_generate.py`**: Invoca el cálculo probabilístico, cuenta las frecuencias acumuladas en los contenedores utilizando la función `zip()` y estructura la información en un `DataFrame` de Pandas.
+* **`graficador.py`**: Módulo encargado de recibir el `DataFrame` procesado y renderizar la gráfica de barras con Matplotlib.
+* **`app.py`**: Script principal (`main`) que coordina la ejecución, gestiona los datos e invoca el graficador.
+
+---
+
+## 📋 Requisitos Previos
+
+Asegúrate de tener instalado Python 3.8 o superior y las siguientes librerías dentro de tu entorno virtual (`.venv`):
+
+* `pandas`
+* `matplotlib`
+
+### 🌐 Configuración del Entorno Virtual (venv)
+
+Antes de ejecutar la aplicación, se recomienda crear e iniciar un entorno virtual para aislar las dependencias:
+
+1. **Crear el entorno virtual:**
+   ```bash
+   python -m venv .venv
+
+Instálalas con:
+```bash
+pip install pandas matplotlib
+```
+
+⚙️ Configuración de Parámetros
+En el archivo app.py, puedes ajustar los siguientes parámetros en la función obtener_df():
+
+num_bolas: Cantidad total de bolas a simular (por defecto: 30000).
+
+num_nivel: Número de niveles o filas de clavos (por defecto: 12).
+
