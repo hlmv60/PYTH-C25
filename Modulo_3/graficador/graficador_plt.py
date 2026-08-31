@@ -2,10 +2,11 @@ import matplotlib.pyplot as plt
 
 def crear_grafica_barras(df, column_x, column_y):
     #Crear la figura y los ejes
-    fig, ax = plt.subplot(fisize=(8,5))
+    fig, ax = plt.subplots(figsize=(10, 6))
+    #fig, ax = plt.subplot(figsize=(8,5))
     
     #Generar las barras
-    ax.bar(df[column_x], df[column_y], color='skyblue', edgecolor='black')
+    ax.bar(df[column_x], df[column_y], color='mediumorchid', edgecolor='black')
     
     #Personalización
     ax.set_title(f'Gráfica de {column_x} por {column_y}')
