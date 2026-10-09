@@ -223,3 +223,153 @@ num_bolas: Cantidad total de bolas a simular (por defecto: 30000).
 
 num_nivel: Número de niveles o filas de clavos (por defecto: 12).
 
+# Pokédex con PokeAPI  Consumo de API Python Proyecto 4
+
+## Descripción
+Este proyecto consiste en crear una pequeña Pokédex utilizando la API pública de Pokémon, PokeAPI. El programa solicita el nombre de un Pokémon, consulta la información disponible en la API, muestra sus datos principales y guarda toda la información en un archivo JSON dentro de una carpeta llamada `pokedex`.
+
+## Objetivo
+Desarrollar una aplicación en Python que:
+- consulte datos desde una API REST,
+- valide si el Pokémon existe,
+- muestre su imagen, peso, tamaño, movimientos, habilidades y tipos,
+- almacene la información en archivos JSON.
+
+## Funcionalidades
+- Entrada del nombre de un Pokémon por teclado.
+- Consulta a la API de PokeAPI.
+- Validación de errores si el Pokémon no existe.
+- Visualización de la imagen frontal del Pokémon.
+- Impresión de información relevante:
+  - nombre
+  - peso
+  - altura
+  - movimientos
+  - habilidades
+  - tipos
+- Guardado automatico de los datos en `pokedex/<nombre>.json`.
+
+## Requisitos
+Para ejecutar este proyecto necesitas instalar las siguientes librerías:
+
+```bash
+pip install requests matplotlib pillow
+```
+
+### Librerías utilizadas
+- `requests`: permite hacer peticiones HTTP a la API.
+- `matplotlib`: se usa para mostrar la imagen del Pokémon.
+- `PIL` (`Pillow`): permite abrir y procesar imágenes.
+- `json`: para guardar la información en formato JSON.
+- `os`: para crear carpetas y rutas de archivos.
+
+## Cómo funciona
+1. El usuario escribe el nombre de un Pokémon.
+2. El programa construye la URL de consulta:
+   `https://pokeapi.co/api/v2/pokemon/{nombre}`
+3. Se realiza una petición con `requests.get()`.
+4. Si la respuesta tiene código `200`, se procesa la información.
+5. Se extraen los campos necesarios:
+   - `name`
+   - `weight`
+   - `height`
+   - `moves`
+   - `abilities`
+   - `types`
+   - `sprites.front_default`
+6. La imagen se muestra con `matplotlib`.
+7. Los datos se guardan en un archivo JSON dentro de la carpeta `pokedex`.
+
+## Ejemplo de uso
+```bash
+python pokemon_api.py
+```
+
+Entrada:
+```text
+Pon un pokémon: pikachu
+```
+
+Salida esperada:
+```text
+Nombre: pikachu
+Peso: 60
+Tamaño: 4
+
+Movimientos de pikachu:
+- thunder-shock
+- quick-attack
+...
+
+Habilidades de pikachu:
+- static
+- lightning-rod
+
+Tipos de pikachu:
+- electric
+
+Archivo JSON guardado en: pokedex/pikachu.json
+```
+
+## Ejemplo de archivo JSON generado
+```json
+{
+    "name": "pikachu",
+    "peso": 60,
+    "altura": 4,
+    "movimientos": [
+        "thunder-shock",
+        "quick-attack",
+        "slam"
+    ],
+    "habilidades": [
+        "static",
+        "lightning-rod"
+    ],
+    "tipos": [
+        "electric"
+    ],
+    "imagen_front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
+}
+```
+
+## Aprendizajes del módulo
+Durante la realización de este ejercicio se aplicaron varios conceptos clave de Python y programación:
+
+### 1. Consumo de APIs
+Se aprendió a consumir datos desde una API externa con `requests`, interpretar respuestas JSON y utilizar endpoints dinámicos.
+
+### 2. Manejo de datos JSON
+Se utilizó el módulo `json` para guardar información estructurada en un archivo `.json`, lo que permite almacenar datos en un formato fácil de leer y reutilizar.
+
+### 3. Trabajo con archivos y carpetas
+Con `os.makedirs()` se aprendió a crear directorios automáticamente cuando no existen, así como a manejar rutas con `os.path.join()`.
+
+### 4. Uso de listas y comprensión de listas
+Se emplearon listas para almacenar:
+- movimientos
+- habilidades
+- tipos
+
+Ejemplo:
+```python
+movimientos = [m["move"]["name"] for m in datos.get("moves", [])]
+```
+
+### 5. Manejo de errores
+Se aprendió a validar si la API respondió correctamente y si el Pokémon existe. Esto ayuda a evitar fallos del programa y ofrecer mensajes útiles al usuario.
+
+### 6. Procesamiento de imágenes
+Se utilizó `PIL` y `matplotlib` para cargar y mostrar imágenes descargadas desde una URL.
+
+### 7. Entrada y salida por consola
+Se practicó la interacción con el usuario mediante `input()`, además de mostrar resultados con `print()`.
+
+## Capturas de ejemplo
+Este proyecto puede mostrar una vista similar a esta al buscar un Pokémon:
+
+![Pikachu](https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png)
+
+## Conclusión
+Este ejercicio permitió combinar varios conceptos importantes del lenguaje Python: consumo de APIs, manejo de archivos, tratamiento de datos JSON, uso de librerías externas y visualización gráfica. Además, se desarrolló una pequeña aplicación útil y práctica que simula una Pokédex básica.
+
